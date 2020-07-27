@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, StatusBar } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Button } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -10,13 +10,13 @@ const weatherOptions = {
   },
 };
 
-export default Weather = ({ temp, condition }) => {
+export default Weather = ({ temp, condition, navigation }) => {
   return (
     <LinearGradient
       style={styles.container}
       colors={weatherOptions[condition].colors}
     >
-      <StatusBar barStyle="light-content" />
+      {/*<StatusBar barStyle="light-content" />*/}
       <View style={styles.halfContainer}>
         <MaterialCommunityIcons
           name={weatherOptions[condition].iconName}
@@ -24,6 +24,12 @@ export default Weather = ({ temp, condition }) => {
           color="#fff"
         />
         <Text style={styles.temp}>{temp} °C</Text>
+        <Button
+          title="Click"
+          onPress={() => {
+            navigation.navigate("Todos");
+          }}
+        />
       </View>
       <View style={{ ...styles.halfContainer, ...styles.textContainer }}>
         <Text style={styles.title}>Clouds</Text>
